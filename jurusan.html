@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMK Negeri 1 Banyuwangi - Unggul & Berkarakter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Navigasi -->
+    <nav class="glass-nav sticky top-0 z-50 border-b border-gray-100">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">S</div>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight text-blue-900">SMKN 1 Banyuwangi</h1>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest">Banyuwangi</p>
+                </div>
+            </div>
+            
+            <!-- Navbar -->
+            <div class="hidden lg:flex items-center gap-8 font-semibold text-gray-700">
+                <a href="index.html" class="text-blue-600 border-b-2 border-blue-600">Beranda</a>
+                <div class="relative group">
+                    <button class="hover:text-blue-600 flex items-center gap-1">Profil <i class="fas fa-chevron-down text-xs"></i></button>
+                </div>
+                <a href="jurusan.html" class="hover:text-blue-600">Jurusan</a>
+                <a href="ppdb.html" class="hover:text-blue-600 flex items-center">
+                    PPDB 2026
+                    <span class="ml-2 px-2 py-0.5 bg-red-500 text-white text-[10px] rounded-full badge-new">NEW</span>
+                </a>
+                <a href="galeri.html" class="hover:text-blue-600">Galeri</a>
+                <a href="#" class="hover:text-blue-600">Kontak</a>
+            </div>
+
+            <button class="bg-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-700 transition lg:block hidden">
+                 Login
+            </button>
+
+            <!-- Mobile Toggle -->
+            <button class="lg:hidden text-2xl" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t p-6 space-y-4 shadow-xl">
+            <a href="#" class="block font-semibold">Beranda</a>
+            <a href="#" class="block font-semibold">Profil</a>
+            <a href="#" class="block font-semibold">Jurusan</a>
+            <a href="#" class="block font-semibold text-red-500">PPDB 2024</a>
+            <a href="#" class="block font-semibold">Kontak</a>
+        </div>
+    </nav>
