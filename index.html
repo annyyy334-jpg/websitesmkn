@@ -6,6 +6,49 @@
     <title>SMK Negeri 1 Banyuwangi - Unggul & Berkarakter</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hover-card:hover {
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .badge-new {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes blob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
 
@@ -26,6 +69,16 @@
                 <a href="index.html" class="text-blue-600 border-b-2 border-blue-600">Beranda</a>
                 <div class="relative group">
                     <button class="hover:text-blue-600 flex items-center gap-1">Profil <i class="fas fa-chevron-down text-xs"></i></button>
+                    
+                    <!-- Dropdown -->
+                    <div class="absolute left-0 mt-2 w-56 bg-white shadow-xl rounded-lg py-3 
+                                opacity-0 invisible group-hover:opacity-100 group-hover:visible 
+                                transition duration-300 z-50">
+                        <a href="sambutan.html" class="block px-5 py-3 hover:bg-gray-100">Sambutan Kepala</a>
+                        <a href="visi.html" class="block px-5 py-3 hover:bg-gray-100">Visi & Misi</a>
+                        <a href="fasilitas.html" class="block px-5 py-3 hover:bg-gray-100">Fasilitas</a>
+                        <a href="ekstrakulikuler.html" class="block px-5 py-3 hover:bg-gray-100">Ekstrakulikuler</a>
+                    </div>
                 </div>
                 <a href="jurusan.html" class="hover:text-blue-600">Jurusan</a>
                 <a href="ppdb.html" class="hover:text-blue-600 flex items-center">
@@ -52,24 +105,18 @@
         <div id="mobile-menu" class="hidden lg:hidden bg-white border-t p-6 space-y-4 shadow-xl">
             <a href="index.html" class="block font-semibold">Beranda</a>
            
-            <div class="relative">
-                <button id="btnProfilMobile"
-                class="hover:text-blue-600 flex items-center gap-1">
-                    Profil <i class="fas fa-chevron-down text-xs ml-1"></i>
-                </button>
+            <button id="btnProfilMobile" class="w-full text-left font-semibold flex items-center justify-between">
+                Profil
+                <i class="fas fa-chevron-down text-xs"></i>
+            </button>
 
-                 <div id="dropdownProfilMobile"
-        class="hidden absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-2 z-50">
-        <a href="visi.html" class="block px-4 py-2 hover:bg-gray-100">
-            Visi Misi
-        </a>
-        <a href="sejarah.html" class="block px-4 py-2 hover:bg-gray-100">
-            Sejarah
-        </a>
-        <a href="struktur.html" class="block px-4 py-2 hover:bg-gray-100">
-            Struktur Organisasi
-        </a>
-        </div>
+            <!-- Dropdown Mobile -->
+            <div id="dropdownProfilMobile" class="hidden bg-gray-100 rounded-lg p-3 space-y-2">
+                <a href="profil.html#visi-misi" class="block py-2 px-3 hover:bg-gray-200 rounded">Visi & Misi</a>
+                <a href="profil.html#fasilitas" class="block py-2 px-3 hover:bg-gray-200 rounded">Fasilitas</a>
+                <a href="profil.html#ekstrakulikuler" class="block py-2 px-3 hover:bg-gray-200 rounded">Ekstrakulikuler</a>
+                <a href="profil.html#sambutan" class="block py-2 px-3 hover:bg-gray-200 rounded">Sambutan Kepala</a>
+            </div>
         
             <a href="jurusan.html" class="block font-semibold">Jurusan</a>
             <a href="ppdb.html" class="block font-semibold text-red-500">PPDB 2026</a>
@@ -161,7 +208,7 @@
                     <div class="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600 text-2xl mb-6 group-hover:bg-orange-600 group-hover:text-white transition-colors">
                         <i class="fas fa-pencil"></i>
                     </div>
-                    <h4 class="text-xl font-bold text-gray-900 mb-3">Desai Komunikasi Visual (DKV)</h4>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Desain Komunikasi Visual (DKV)</h4>
                     <p class="text-gray-600 mb-6">Fokus pada desain grafis, animasi, sinematografi, dan konten kreatif digital.</p>
                     <a href="#" class="text-orange-600 font-semibold flex items-center gap-2 hover:gap-4 transition-all">
                         Selengkapnya <i class="fas fa-arrow-right text-sm"></i>
@@ -261,7 +308,6 @@
                     <h2 class="text-4xl font-extrabold text-blue-900">Berita & Kegiatan</h2>
                     <p class="text-gray-500 mt-2">Update terbaru seputar aktivitas sekolah kami.</p>
                 </div>
-                <button class="hidden md:block text-blue-600 font-bold border-b-2 border-blue-600">Lihat Semua Berita</button>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
