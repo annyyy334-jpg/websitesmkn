@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PENGEMBANGAN PERANGKAT LUNAK &amp; GIM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:  #3b82f6;
+      --text:  #1a2540;
+      --sub:   #6b7a99;
+      --bg:    #f4f7fb;
+      --white: #ffffff;
+      --border:#e2e8f0;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 32px;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: .9rem;
+      transition: gap .15s;
+    }
+    .back-btn:hover { gap: 10px; }
+
+    /* ── BLUE BANNER (ujung ke ujung) ── */
+    .banner {
+      background: #3b82f6;
+      width: 100%;
+      padding: 36px 40px 36px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    /*
+    ╔══════════════════════════════════════════════════╗
+    ║  ★ TEMPAT FOTO / LOGO DI BANNER ★               ║
+    ║  Cari <div class="banner-logo"> di bawah ini    ║
+    ║  Hapus teks singkatan, ganti dengan:            ║
+    ║  <img src="logo/plg.png" alt="PENGEMBANGAN PERANGKAT LUNAK &amp; GIM">        ║
+    ║  Ukuran ideal: 80×80 px, PNG transparan         ║
+    ╚══════════════════════════════════════════════════╝
+    */
+    .banner-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .banner-logo img {
+      width: 100%; height: 100%; object-fit: contain;
+    }
+    .banner-text h1 {
+      color: #fff;
+      font-size: clamp(1.1rem, 2.5vw, 1.7rem);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -.3px;
+    }
+    .banner-text .badge {
+      display: inline-block;
+      margin-top: 8px;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.4);
+      border-radius: 999px;
+      padding: 3px 14px;
+      font-size: .78rem;
+      color: #fff;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .main {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 0 24px 80px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    @media (max-width: 680px) {
+      .main { grid-template-columns: 1fr; }
+      .img-col { order: -1; }
+    }
+
+    /* ── LEFT: IMAGE SPACE ── */
+    /*
+    ╔══════════════════════════════════════════════════╗
+    ║  ★ TEMPAT FOTO KEGIATAN / ILUSTRASI ★           ║
+    ║  Cari <div class="img-placeholder"> di bawah    ║
+    ║  Ganti seluruh div itu dengan:                  ║
+    ║  <img src="foto/plg.jpg" alt="Foto PENGEMBANGAN PERANGKAT LUNAK &amp; GIM"    ║
+    ║       style="width:100%;border-radius:14px;">   ║
+    ╚══════════════════════════════════════════════════╝
+    */
+    .img-col {
+      position: sticky;
+      top: 24px;
+    }
+    .img-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 14px;
+      background: #e2e8f0;
+      border: 2px dashed #c8d6e8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--sub);
+      text-align: center;
+      padding: 24px;
+      gap: 10px;
+    }
+    .img-placeholder .ico { font-size: 2.5rem; }
+    .img-placeholder p { font-size: .82rem; line-height: 1.5; }
+
+    /* ── RIGHT: CONTENT ── */
+    .content-col { display: flex; flex-direction: column; gap: 24px; }
+
+    .card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+    .card-title {
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #3b82f6;
+      margin-bottom: 14px;
+    }
+    .desc {
+      font-size: .95rem;
+      line-height: 1.75;
+      color: var(--text);
+    }
+
+    /* lingkup kerja grid */
+    .jobs {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .job-chip {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: #1d4ed8;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="back-btn" href="index.html">&#8592; Kembali ke Daftar Jurusan</a>
+</div>
+
+<div class="banner">
+  <div class="banner-logo">
+  <img src="assets/img/pplg logo.png" alt="pplg">
+  </div>
+  <div class="banner-text">
+    <h1>PENGEMBANGAN PERANGKAT LUNAK &amp; GIM</h1>
+    <span class="badge">Kompetensi Keahlian · SMKN 1 Banyuwangi</span>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="img-col">
+    <!--
+      ★ GANTI div.img-placeholder INI DENGAN TAG IMG ★
+      Contoh:
+      <img src="foto/plg.jpg" alt="Foto PENGEMBANGAN PERANGKAT LUNAK &amp; GIM"
+           style="width:100%; border-radius:14px; display:block;">
+    -->
+    <div class="img-placeholder">
+      <span class="ico">🖼️</span>
+      <p>Taruh foto<br/><strong>PENGEMBANGAN PERANGKAT LUNAK &amp; GIM</strong>
+    </div>
+  </div>
+
+
+  <div class="content-col">
+
+    <div class="card">
+      <div class="card-title">Apa yang Dipelajari</div>
+      <p class="desc">Rekayasa Perangkat Lunak / Pengembangan Perangkat Lunak dan Gim merupakan jurusan yang mempelajari langkah-langkah pengembangan perangkat lunak, termasuk perancangan, pembuatan, pemeliharaan, manajemen organisasi perangkat lunak, dan manajemen kualitas. Peserta didik dibekali kompetensi seperti perancangan antarmuka desain aplikasi (UI/UX), perancangan sistem, serta pengembangan aplikasi berbasis Desktop, Web, dan Mobile.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Lingkup Kerja</div>
+      <div class="jobs">
+        <div class="job-chip">Web Developer</div>
+        <div class="job-chip">Mobile Developer</div>
+        <div class="job-chip">Game Developer</div>
+        <div class="job-chip">Junior Programmer</div>
+        <div class="job-chip">Front End Programmer</div>
+        <div class="job-chip">Backend Programmer</div>
+        <div class="job-chip">Database Administrator</div>
+        <div class="job-chip">UI/UX Designer</div>
+        <div class="job-chip">Software Tester</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

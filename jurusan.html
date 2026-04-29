@@ -54,3 +54,318 @@
             <a href="#" class="block font-semibold">Kontak</a>
         </div>
     </nav>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kompetensi Keahlian</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:    #1a6fc4;
+      --teal:    #0eb8b0;
+      --bg:      #f4f7fb;
+      --white:   #ffffff;
+      --text:    #1a2540;
+      --sub:     #6b7a99;
+      --border:  #e2e8f0;
+      --hover-bg:#eef4ff;
+      --shadow:  0 2px 12px rgba(26,111,196,.10);
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+
+    header {
+      height: 8px;
+      background: linear-gradient(90deg, var(--blue) 0%, var(--teal) 100%);
+    }
+
+    .page-title {
+      text-align: center;
+      padding: 48px 24px 32px;
+    }
+    .page-title h1 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -.5px;
+    }
+    .page-title p {
+      color: var(--sub);
+      margin-top: 8px;
+      font-size: .95rem;
+    }
+
+    .list {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 24px;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      transition: background .18s, transform .18s, box-shadow .18s;
+      position: relative;
+    }
+    .card:first-child { border-radius: 14px 14px 0 0; border-bottom: 1px solid var(--border); }
+    .card:last-child  { border-radius: 0 0 14px 14px; border-bottom: none; }
+
+    .card:hover {
+      background: var(--hover-bg);
+      z-index: 1;
+      box-shadow: var(--shadow);
+      transform: translateX(4px);
+    }
+    .card:hover .arrow { opacity: 1; transform: translateX(0); }
+
+    .logo-wrap {
+      width: 64px;
+      height: 64px;
+      overflow: hidden;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: -1px;
+      box-shadow: 0 2px 8px rgba(26,111,196,.18);
+    }
+    .logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .info { flex: 1; }
+    .info .name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .info .sub {
+      font-size: .8rem;
+      color: var(--sub);
+      margin-top: 3px;
+    }
+
+    .label {
+      font-size: .78rem;
+      color: var(--sub);
+      white-space: nowrap;
+      display: none;
+    }
+    @media (min-width: 540px) { .label { display: block; } }
+
+    .arrow {
+      margin-left: 8px;
+      color: var(--blue);
+      font-size: 1.1rem;
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: opacity .18s, transform .18s;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .card { animation: fadeUp .4s both; }
+    .card:nth-child(1)  { animation-delay: .05s; }
+    .card:nth-child(2)  { animation-delay: .10s; }
+    .card:nth-child(3)  { animation-delay: .15s; }
+    .card:nth-child(4)  { animation-delay: .20s; }
+    .card:nth-child(5)  { animation-delay: .25s; }
+    .card:nth-child(6)  { animation-delay: .30s; }
+    .card:nth-child(7)  { animation-delay: .35s; }
+    .card:nth-child(8)  { animation-delay: .40s; }
+    .card:nth-child(9)  { animation-delay: .45s; }
+    .card:nth-child(10) { animation-delay: .50s; }
+    .card:nth-child(11) { animation-delay: .55s; }
+
+    .list-wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 64px;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+    }
+  </style>
+</head>
+<body>
+
+<header></header>
+
+<div class="page-title">
+  <h1>Kompetensi Keahlian</h1>
+  <p>Klik salah satu jurusan untuk melihat informasi selengkapnya</p>
+</div>
+
+<div class="list-wrapper">
+  <div class="list">
+
+    <a class="card" href="pplg.html">
+      <div class="logo-wrap">
+       <img src="assets/img/pplg logo.png" alt="pplg">
+      </div>
+      <div class="info">
+        <div class="name">PENGEMBANGAN PERANGKAT LUNAK &amp; GIM</div>
+        <div class="sub">Kompetensi Keahlian</div>
+      </div>
+      <span class="label">(ketua kompetensi keahlian)</span>
+      <span class="arrow">›</span>
+    </a>
+
+    <a class="card" href="tjkt.html">
+      <div class="logo-wrap">
+        <img src="assets/img/logo_tkj.png" alt="tjkt">
+      </div>
+      <div class="info">
+        <div class="name">TEKNIK JARINGAN KOMPUTER &amp; TELEKOMUNIKASI</div>
+        <div class="sub">Kompetensi Keahlian</div>
+      </div>
+      <span class="label">(ketua kompetensi keahlian)</span>
+      <span class="arrow">›</span>
+    </a>
+
+    <a class="card" href="dkv.html">
+      <div class="logo-wrap">
+      <img src="assets/img/dkv logo.png" alt="dkv">
+      </div>
+      <div class="info">
+        <div class="name">DESAIN KOMUNIKASI VISUAL</div>
+        <div class="sub">Kompetensi Keahlian</div>
+      </div>
+      <span class="label">(ketua kompetensi keahlian)</span>
+      <span class="arrow">›</span>
+    </a>
+
+    <a class="card" href="seni-tari.html">
+      <div class="logo-wrap">
+     <img src="assets/img/tari logo.png" alt="SP">
+      </div>
+      <div class="info">
+        <div class="name">SENI TARI</div>
+        <div class="sub">Kompetensi Keahlian</div>
+      </div>
+      <span class="label">(ketua kompetensi keahlian)</span>
+      <span class="arrow">›</span>
+    </a>
+
+    <a class="card" href="akl.html">
+      <div class="logo-wrap">
+     <img src="assets/img/akutansi logo.jpg" alt="">
+      </div>
+      <div class="info">
+        <div class="name">AKUNTANSI KEUANGAN LEMBAGA</div>
+        <div class="sub">Kompetensi Keahlian</div>
+      </div>
+      <span class="label">(ketua kompetensi keahlian)</span>
+      <span class="arrow">›</span>
+    </a>
+
+    <a class="card" href="mplb.html">
+      <div class="logo-wrap">
+       <img src="assets/img/management png.png" alt="MPLB">
+      </div>
+      <div class="info">
+        <div class="name">MANAJEMEN PERKANTORAN &amp; LAYANAN BISNIS</div>
+        <div class="sub">Kompetensi Keahlian</div>
+      </div>
+      <span class="label">(ketua kompetensi keahlian)</span>
+      <span class="arrow">›</span>
+    </a>
+
+
+    <a class="card" href="perhotelan.html">
+      <div class="logo-wrap">
+       <img src="assets/img/ph logo.png" alt="PH">
+      </div>
+      <div class="info">
+        <div class="name">PERHOTELAN</div>
+        <div class="sub">Kompetensi Keahlian</div>
+      </div>
+      <span class="label">(ketua kompetensi keahlian)</span>
+      <span class="arrow">›</span>
+    </a>
+
+ 
+    <a class="card" href="pemasaran.html">
+      <div class="logo-wrap">
+       <img src="assets/img/pm logo.png" alt="PM">
+      </div>
+      <div class="info">
+        <div class="name">PEMASARAN</div>
+        <div class="sub">Kompetensi Keahlian</div>
+      </div>
+      <span class="label">(ketua kompetensi keahlian)</span>
+      <span class="arrow">›</span>
+    </a>
+
+    
+    <a class="card" href="broadcasting.html">
+      <div class="logo-wrap">
+      <img src="assets/img/bcf logo.png" alt="BCF">
+      </div>
+      <div class="info">
+        <div class="name">BROADCASTING &amp; PERFILMAN</div>
+        <div class="sub">Kompetensi Keahlian</div>
+      </div>
+      <span class="label">(ketua kompetensi keahlian)</span>
+      <span class="arrow">›</span>
+    </a>
+
+
+    <a class="card" href="kuliner.html">
+      <div class="logo-wrap">
+       <img src="assets/img/kl logo.png" alt="KL">
+      </div>
+      <div class="info">
+        <div class="name">KULINER</div>
+        <div class="sub">Kompetensi Keahlian</div>
+      </div>
+      <span class="label">(ketua kompetensi keahlian)</span>
+      <span class="arrow">›</span>
+    </a>
+
+
+    <a class="card" href="ulw.html">
+      <div class="logo-wrap">
+       <img src="assets/img/sekolah logo.png" alt="ULW">
+      </div>
+      <div class="info">
+        <div class="name">USAHA LAYANAN PARIWISATA</div>
+        <div class="sub">Kompetensi Keahlian</div>
+      </div>
+      <span class="label">(ketua kompetensi keahlian)</span>
+      <span class="arrow">›</span>
+    </a>
+
+  </div>
+</div>
+
+</body>
+</html>
