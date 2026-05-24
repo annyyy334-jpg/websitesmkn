@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KULINER · SMKN 1 Banyuwangi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:   #3b82f6;
+      --blue2:  #1d4ed8;
+      --text:   #1a2540;
+      --sub:    #6b7a99;
+      --bg:     #f4f7fb;
+      --white:  #ffffff;
+      --border: #e2e8f0;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: .88rem;
+    }
+    .back-btn:hover { text-decoration: underline; }
+
+    /* ── BANNER ── */
+    .banner {
+      background: #3b82f6;
+      width: 100%;
+      padding: 28px 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .banner-logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+      overflow: hidden;
+      /* ★ background putih agar logo tidak terganggu ★ */
+    }
+    .banner-logo img { width:100%; height:100%; object-fit:contain; }
+    .banner-text h1 {
+      color: #fff;
+      font-size: clamp(1rem, 2.5vw, 1.6rem);
+      font-weight: 800;
+      line-height: 1.25;
+    }
+    .banner-text .badge {
+      display: inline-block;
+      margin-top: 6px;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.4);
+      border-radius: 999px;
+      padding: 3px 12px;
+      font-size: .75rem;
+      color: #fff;
+    }
+
+    /* ── PAGE LAYOUT ── */
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 16px 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* ── MAIN: foto kiri + konten kanan ── */
+    .main-row {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    @media (max-width: 640px) {
+      .main-row { grid-template-columns: 1fr; }
+    }
+
+    .img-slot {
+      width: 100%;
+     border-radius: 14px;display: block;
+    }
+    .img-slot .ico { font-size: 2.4rem; }
+    @media (max-width: 640px) {
+      .img-slot { aspect-ratio: 16/9; }
+    }
+
+    /* card */
+    .card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 22px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    }
+    .card-label {
+      font-size: .68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+    .desc {
+      font-size: .93rem;
+      line-height: 1.78;
+      color: var(--text);
+    }
+    .jobs {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 8px;
+    }
+    .job-chip {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 7px 10px;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--blue2);
+      text-align: center;
+    }
+
+    /* ── JURUSAN LAIN (navigasi gambar) ── */
+    .section-title {
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--sub);
+      margin-bottom: 14px;
+    }
+
+    /* scroll row on mobile, grid on desktop */
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+    }
+    @media (max-width: 500px) {
+      .nav-grid {
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+        padding-bottom: 8px;
+        scrollbar-width: thin;
+      }
+      .nav-grid::-webkit-scrollbar { height: 4px; }
+      .nav-grid::-webkit-scrollbar-thumb { background: #c8d6e8; border-radius: 4px; }
+    }
+
+    .nav-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 10px;
+      cursor: pointer;
+      transition: border-color .18s, box-shadow .18s, transform .18s;
+      flex-shrink: 0;
+      min-width: 110px;
+    }
+    @media (max-width: 500px) {
+      .nav-card { min-width: 100px; }
+    }
+    .nav-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 4px 14px rgba(59,130,246,.18);
+      transform: translateY(-2px);
+    }
+    .nav-card.active {
+      border-color: var(--blue);
+      background: #eff6ff;
+      box-shadow: 0 0 0 3px rgba(59,130,246,.15);
+      pointer-events: none;
+    }
+
+    /* logo dalam nav */
+    .nav-logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .7rem;
+      font-weight: 800;
+      color: var(--sub);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .nav-card.active .nav-logo {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+    .nav-logo img { width:100%; height:100%; object-fit:contain; }
+
+    .nav-label {
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--text);
+      text-align: center;
+      line-height: 1.3;
+    }
+    .nav-card.active .nav-label { color: var(--blue2); }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <a class="back-btn" href="index.html">&#8592; Daftar Jurusan</a>
+</div>
+
+<!-- BANNER BIRU -->
+<div class="banner">
+  <div class="banner-logo">
+  <img src="assets/img/kl logo.png" alt="">
+  </div>
+  <div class="banner-text">
+    <h1>KULINER</h1>
+    <span class="badge">Kompetensi Keahlian · SMKN 1 Banyuwangi</span>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- BARIS UTAMA: foto + konten -->
+  <div class="main-row">
+
+    <!-- KIRI: foto -->
+    <div>
+      
+      <div class="img-slot">
+        <img src="assets/img/gambar kl.jpg" alt="">
+      </div>
+    </div>
+
+    <!-- KANAN: deskripsi + lingkup kerja -->
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div class="card">
+        <div class="card-label">Apa yang Dipelajari</div>
+        <p class="desc">Kuliner adalah ilmu pengetahuan mengenai boga (seni mengolah masakan) yang meliputi persiapan, pengolahan, hingga menghidangkan makanan baik tradisional maupun internasional. Kompetensi Keahlian Kuliner memberikan pelajaran di bidang Pengolahan dan Penyajian Makanan oriental maupun kontinental.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Lingkup Kerja</div>
+        <div class="jobs">
+          <div class="job-chip">Restaurant</div>
+        <div class="job-chip">Koki/Chef</div>
+        <div class="job-chip">Rumah Makan</div>
+        <div class="job-chip">Usaha Catering</div>
+        <div class="job-chip">Kapal Pesiar</div>
+        <div class="job-chip">Baker</div>
+        <div class="job-chip">Barista</div>
+        <div class="job-chip">Wirausaha</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- NAVIGASI JURUSAN LAIN -->
+  <div>
+    <div class="section-title">Jurusan Lainnya — klik untuk pindah</div>
+    <div class="nav-grid">
+        <a class="nav-card" href="pplg.html">
+          <div class="nav-logo">
+            <img src="assets/img/pplg logo.png" alt="pplg">
+          </div>
+          <span class="nav-label">PENGEMBANGAN PERANGKAT LUNAK &amp; GIM</span>
+        </a>
+        <a class="nav-card" href="tjkt.html" >
+          <div class="nav-logo">
+          <img src="assets/img/logo_tkj.png" alt="tkj">
+          </div>
+          <span class="nav-label">TEKNIK JARINGAN KOMPUTER &amp; TELEKOMUNIKASI</span>
+        </a>
+        <a class="nav-card" href="dkv.html" >
+          <div class="nav-logo">
+           <img src="assets/img/dkv logo.png" alt="dkv">
+          </div>
+          <span class="nav-label">DESAIN KOMUNIKASI VISUAL</span>
+        </a>
+        <a class="nav-card" href="sp.html" >
+          <div class="nav-logo">
+            <img src="assets/img/tari logo.png" alt="ST">
+          </div>
+          <span class="nav-label">SENI TARI</span>
+        </a>
+        <a class="nav-card" href="akl.html" >
+          <div class="nav-logo">
+          <img src="assets/img/akutansi logo.jpg" alt="akl">
+          </div>
+          <span class="nav-label">AKUNTANSI KEUANGAN LEMBAGA</span>
+        </a>
+        <a class="nav-card" href="mplb.html">
+          <div class="nav-logo">
+           <img src="assets/img/management png.png" alt="MPLB">
+          </div>
+          <span class="nav-label">MANAJEMEN PERKANTORAN &amp; LAYANAN BISNIS</span>
+        </a>
+        <a class="nav-card" href="ph.html">
+          <div class="nav-logo">
+           <img src="assets/img/ph logo.png" alt="PH">
+          </div>
+          <span class="nav-label">PERHOTELAN</span>
+        </a>
+        <a class="nav-card" href="pm.html" >
+          <div class="nav-logo">
+            <img src="assets/img/pm logo.png" alt="PM">
+          </div>
+          <span class="nav-label">PEMASARAN</span>
+        </a>
+        <a class="nav-card" href="bcf.html" >
+          <div class="nav-logo">
+            <img src="assets/img/bcf logo.png" alt="BCF">
+          </div>
+          <span class="nav-label">BROADCASTING &amp; PERFILMAN</span>
+        </a>
+        <a class="nav-card active" href="kl.html" aria-current="page">
+          <div class="nav-logo">
+            <img src="assets/img/kl logo.png" alt="KL">
+          </div>
+          <span class="nav-label">KULINER</span>
+        </a>
+        <a class="nav-card" href="ulw.html" >
+          <div class="nav-logo">
+           <img src="assets/img/sekolah logo.png" alt="ULW">
+          </div>
+          <span class="nav-label">USAHA LAYANAN WISATA</span>
+        </a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
