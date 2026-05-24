@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PENGEMBANGAN PERANGKAT LUNAK & GIM · SMKN 1 Banyuwangi</title>
+  <title>AKUNTANSI KEUANGAN LEMBAGA · SMKN 1 Banyuwangi</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,6 +23,7 @@
       min-height: 100vh;
     }
 
+    /* ── TOPBAR ── */
     .topbar {
       background: var(--white);
       border-bottom: 1px solid var(--border);
@@ -44,7 +45,7 @@
 
     /* ── BANNER ── */
     .banner {
-      background: #468432;
+      background: #7C848B;
       width: 100%;
       padding: 28px 24px;
       display: flex;
@@ -104,16 +105,17 @@
     @media (max-width: 640px) {
       .main-row { grid-template-columns: 1fr; }
     }
-      
+
     .img-slot {
-      width:100% ;
-      border-radius:14px;display:block
+    width: 100%;
+     border-radius: 14px;display: block;
     }
     .img-slot .ico { font-size: 2.4rem; }
     @media (max-width: 640px) {
       .img-slot { aspect-ratio: 16/9; }
     }
 
+    /* card */
     .card {
       background: var(--white);
       border-radius: 14px;
@@ -243,16 +245,16 @@
 
 <!-- TOPBAR -->
 <div class="topbar">
-  <a class="back-btn" href="jurusan.html">&#8592; Daftar Jurusan</a>
+  <a class="back-btn" href="index.html">&#8592; Daftar Jurusan</a>
 </div>
 
 <!-- BANNER BIRU -->
 <div class="banner">
   <div class="banner-logo">
-    <img src="assets/img/pplg logo.png" alt="pplg">
+    <img src="assets/img/akutansi logo.jpg" alt="AKL">
   </div>
   <div class="banner-text">
-    <h1>PENGEMBANGAN PERANGKAT LUNAK &amp; GIM</h1>
+    <h1>AKUNTANSI KEUANGAN LEMBAGA</h1>
     <span class="badge">Kompetensi Keahlian · SMKN 1 Banyuwangi</span>
   </div>
 </div>
@@ -262,30 +264,30 @@
   <!-- BARIS UTAMA: foto + konten -->
   <div class="main-row">
 
-    <!-- KIRI: foto -->
+    
     <div>
-     <img src="assets/img/gambar pplg.jpg" alt="gambar">
-      <div class="img-slot">
-      </div>
+     <img src="assets/img/gambar akl.jpg" alt="akl">
     </div>
 
+    <!-- KANAN: deskripsi + lingkup kerja -->
     <div style="display:flex;flex-direction:column;gap:16px;">
       <div class="card">
         <div class="card-label">Apa yang Dipelajari</div>
-        <p class="desc">Rekayasa Perangkat Lunak / Pengembangan Perangkat Lunak dan Gim merupakan jurusan yang mempelajari langkah-langkah pengembangan perangkat lunak, termasuk perancangan, pembuatan, pemeliharaan, manajemen organisasi perangkat lunak, dan manajemen kualitas. Peserta didik dibekali kompetensi seperti perancangan antarmuka desain aplikasi (UI/UX), perancangan sistem, serta pengembangan aplikasi berbasis Desktop, Web, dan Mobile.</p>
+        <p class="desc">Pembelajaran akuntansi terdiri dari pembelajaran manual dan akuntansi komputer (MYOB). Dengan mempelajari akuntansi, siswa dapat mengembangkan pengetahuan dalam dunia akuntansi dan menyusun laporan keuangan sederhana baik untuk perusahaan jasa, perusahaan dagang, maupun perusahaan manufaktur.</p>
       </div>
       <div class="card">
         <div class="card-label">Lingkup Kerja</div>
         <div class="jobs">
-          <div class="job-chip">Web Developer</div>
-        <div class="job-chip">Mobile Developer</div>
-        <div class="job-chip">Game Developer</div>
-        <div class="job-chip">Junior Programmer</div>
-        <div class="job-chip">Front End Programmer</div>
-        <div class="job-chip">Backend Programmer</div>
-        <div class="job-chip">Database Administrator</div>
-        <div class="job-chip">UI/UX Designer</div>
-        <div class="job-chip">Software Tester</div>
+          <div class="job-chip">Konsultan Bisnis</div>
+        <div class="job-chip">Wirausaha</div>
+        <div class="job-chip">Perencanaan Keuangan</div>
+        <div class="job-chip">Accounting Management</div>
+        <div class="job-chip">Auditor</div>
+        <div class="job-chip">Konsultan Pajak</div>
+        <div class="job-chip">Credit Analyst</div>
+        <div class="job-chip">Financial Analyst</div>
+        <div class="job-chip">Perusahaan Jasa & Dagang</div>
+        <div class="job-chip">Perbankan dan Koperasi</div>
         </div>
       </div>
     </div>
@@ -293,10 +295,10 @@
   </div>
 
   <!-- NAVIGASI JURUSAN LAIN -->
-  <div>
+   <div>
     <div class="section-title">Jurusan Lainnya — klik untuk pindah</div>
     <div class="nav-grid">
-        <a class="nav-card active" href="pplg.html" aria-current="page">
+        <a class="nav-card" href="pplg.html">
           <div class="nav-logo">
             <img src="assets/img/pplg logo.png" alt="pplg">
           </div>
@@ -308,7 +310,7 @@
           </div>
           <span class="nav-label">TEKNIK JARINGAN KOMPUTER &amp; TELEKOMUNIKASI</span>
         </a>
-        <a class="nav-card" href="dkv.html" >
+        <a class="nav-card" href="dkv.html">
           <div class="nav-logo">
            <img src="assets/img/dkv logo.png" alt="dkv">
           </div>
@@ -320,7 +322,7 @@
           </div>
           <span class="nav-label">SENI TARI</span>
         </a>
-        <a class="nav-card" href="akl.html" >
+        <a class="nav-card active" href="akl.html" aria-current="page">
           <div class="nav-logo">
           <img src="assets/img/akutansi logo.jpg" alt="akl">
           </div>

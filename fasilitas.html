@@ -1,437 +1,463 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fasilitas Eksklusif - SMK Negeri 1 Banyuwangi</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            overflow-x: hidden;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fasilitas – SMKN 1 Banyuwangi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-        }
+    body {
+      font-family: 'Lato', sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+    }
 
-        /* Border Cahaya Halus */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-        }
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 87px;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center;
+      padding: 0 40px;
+      gap: 24px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px; margin-right: auto;
+    }
+    .nav-logo .logo-box {
+      width: 54px; height: 54px;
+      background: linear-gradient(135deg,#1a6fcf,#0d4a9e);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Lalezar', sans-serif; font-size: 28px; color: #fff;
+    }
+    .nav-logo .school-name { line-height: 1.2; }
+    .nav-logo .school-name strong { display: block; font-size: 18px; font-weight: 700; }
+    .nav-logo .school-name span  { font-size: 13px; color: #aaa; }
+    nav a {
+      color: #ccc; text-decoration: none; font-size: 15px;
+      transition: color .2s;
+    }
+    nav a:hover, nav a.active { color: #fff; }
+    .nav-login {
+      background: #1a6fcf; color: #fff !important;
+      padding: 8px 22px; border-radius: 8px; font-weight: 700;
+      transition: background .2s !important;
+    }
+    .nav-login:hover { background: #1558a8 !important; }
 
-        .glass-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border: 1px solid rgba(59, 130, 246, 0.5);
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
-        }
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh; min-height: 600px;
+      display: flex; align-items: flex-end;
+      padding: 0 68px 80px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://www.figma.com/api/mcp/asset/d9a6b47c-9a8a-48ad-a28d-7a1f44fd9e98');
+      background-size: cover; background-position: center;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.2) 60%, transparent 100%);
+    }
+    .hero-text { position: relative; z-index: 1; max-width: 600px; }
+    .hero-text .label {
+      font-size: 15px; color: rgba(255,255,255,.75);
+      letter-spacing: .06em; margin-bottom: 10px;
+    }
+    .hero-text h1 {
+      font-family: 'Lalezar', sans-serif;
+      font-size: clamp(48px, 7vw, 80px);
+      line-height: 1; margin-bottom: 20px;
+      text-shadow: 0 4px 24px rgba(0,0,0,.5);
+    }
+    .hero-text p {
+      font-size: 17px; line-height: 1.65;
+      color: rgba(255,255,255,.82);
+      max-width: 520px;
+    }
 
-        /* Teks Gradasi */
-        .gradient-text {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    /* ── SECTION ── */
+    section.facilities {
+      background: #0f0f0f;
+      padding: 80px 60px 100px;
+    }
+    .section-header {
+      margin-bottom: 48px;
+    }
+    .section-header h2 {
+      font-family: 'Lalezar', sans-serif;
+      font-size: 38px; margin-bottom: 8px;
+    }
+    .section-header p { color: #888; font-size: 15px; }
 
-        /* Ornamen Latar Belakang */
-        .blob {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: linear-gradient(180deg, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.05) 100%);
-            filter: blur(80px);
-            border-radius: 50%;
-            z-index: -1;
-            animation: move 20s infinite alternate;
-        }
+    /* ── GRID ── */
+    .facilities-grid {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      overflow-x: auto;
+      padding-bottom: 16px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,.2) transparent;
+    }
+    .facilities-grid::-webkit-scrollbar { height: 6px; }
+    .facilities-grid::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,.2); border-radius: 99px;
+    }
 
-        @keyframes move {
-            from { transform: translate(-10%, -10%); }
-            to { transform: translate(20%, 20%); }
-        }
+    /* ── CARD ── */
+    .facility-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      height: 320px;
+      min-width: 240px;
+      width: 240px;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      cursor: pointer;
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
+    .facility-card:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 24px 48px rgba(0,0,0,.6);
+    }
+    .facility-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+    .facility-card:hover img { transform: scale(1.06); }
+    .facility-card .overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.1) 55%, transparent 100%);
+    }
+    .facility-card .info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 20px 22px 22px;
+    }
+    .facility-card .info .school {
+      font-size: 13px; color: rgba(255,255,255,.7);
+      letter-spacing: .04em; margin-bottom: 4px;
+    }
+    .facility-card .info .name {
+      font-family: 'Lalezar', sans-serif;
+      font-size: 22px; color: #fff; line-height: 1.2;
+    }
 
-        /* gambar Unik */
-        .img-mask {
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
-            transition: clip-path 0.5s ease;
-        }
+    /* ── DETAIL PANELS ── */
+    .detail-section {
+      background: #0a0a0a;
+      padding: 80px 60px 100px;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .detail-section + .detail-section {
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .detail-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .detail-inner.reverse { direction: rtl; }
+    .detail-inner.reverse > * { direction: ltr; }
+    .detail-img {
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .detail-img img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .detail-body .tag {
+      display: inline-block;
+      background: rgba(26,111,207,.25);
+      color: #5ba4f5;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 99px;
+      margin-bottom: 20px;
+    }
+    .detail-body h3 {
+      font-family: 'Lalezar', sans-serif;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.1; margin-bottom: 18px;
+      color: #fff;
+    }
+    .detail-body p {
+      font-size: 16px; line-height: 1.75;
+      color: #999; max-width: 520px;
+    }
 
-        .glass-card:hover .img-mask {
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 85%);
-        }
+    /* ── FOOTER ── */
+    footer {
+      background: #050505;
+      padding: 60px; border-top: 1px solid rgba(255,255,255,.06);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 20px;
+    }
+    footer .f-logo {
+      font-family: 'Lalezar', sans-serif;
+      font-size: 22px;
+    }
+    footer p { color: #555; font-size: 13px; }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
-
-        .badge-new { animation: pulse 2s infinite; }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.05); }
-        }
-    </style>
+    @media (max-width: 768px) {
+      .hero { padding: 0 24px 60px; }
+      section.facilities, .detail-section { padding: 60px 24px 80px; }
+      .detail-inner { grid-template-columns: 1fr; }
+      .detail-inner.reverse { direction: ltr; }
+      nav { padding: 0 20px; gap: 14px; }
+      nav a:not(.nav-login):not(.nav-home) { display: none; }
+    }
+  </style>
 </head>
-<body class="bg-[#f8fafc] text-slate-800">
+<body>
 
-    <!-- Background -->
-    <div class="blob top-[-100px] left-[-100px]"></div>
-    <div class="blob bottom-[-200px] right-[-100px]" style="animation-delay: -5s; background: rgba(96, 165, 250, 0.1);"></div>
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">
+    <div class="logo-box">S</div>
+    <div class="school-name">
+      <strong>SMKN 1 Banyuwangi</strong>
+      <span>Banyuwangi</span>
+    </div>
+  </div>
+  <a href="#" class="nav-home">Beranda</a>
+  <a href="#">Profil</a>
+  <a href="#">Jurusan</a>
+  <a href="#" class="active">Fasilitas</a>
+  <a href="#">Kontak</a>
+  <a href="#" class="nav-login">Login</a>
+</nav>
 
-    <!-- Navigasi -->
-   <nav class="glass-nav sticky top-0 z-50 border-b border-gray-100">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">S</div>
-                <div>
-                    <h1 class="font-bold text-lg leading-tight text-blue-900">SMKN 1 Banyuwangi</h1>
-                     <p id="welcome" class="text-blue-600 font-semibold"></p> <!-- tempat menampilkan nama pengguna yang login -->
-                    <p class="text-xs text-gray-500 uppercase tracking-widest">Banyuwangi</p>
-                </div>
-            </div>
-            
-            <!-- Navbar -->
-            <div class="hidden lg:flex items-center gap-8 font-semibold text-gray-700">
-                <a href="index.html" class="text-blue-600 border-b-2 border-blue-600">Beranda</a>
-                <div class="relative group">
-                    <button class="hover:text-blue-600 flex items-center gap-1">Profil <i class="fas fa-chevron-down text-xs"></i></button>
-                    
-                    <!-- Dropdown -->
-                    <div class="absolute left-0 mt-2 w-56 bg-white shadow-xl rounded-lg py-3 
-                                opacity-0 invisible group-hover:opacity-100 group-hover:visible 
-                                transition duration-300 z-50">
-                        <a href="sambutan.html" class="block px-5 py-3 hover:bg-gray-100">Sambutan Kepala</a>
-                        <a href="visi.html" class="block px-5 py-3 hover:bg-gray-100">Visi & Misi</a>
-                        <a href="fasilitas.html" class="block px-5 py-3 hover:bg-gray-100">Fasilitas</a>
-                        <a href="ekstrakulikuler.html" class="block px-5 py-3 hover:bg-gray-100">Ekstrakulikuler</a>
-                    </div>
-                </div>
-                <a href="jurusan.html" class="hover:text-blue-600">Jurusan</a>
-                <a href="ppdb.html" class="hover:text-blue-600 flex items-center">
-                    PPDB 2026
-                    <span class="ml-2 px-2 py-0.5 bg-red-500 text-white text-[10px] rounded-full badge-new">NEW</span>
-                </a>
-                <a href="galeri.html" class="hover:text-blue-600">Galeri</a>
-                <a href="#" class="hover:text-blue-600">Kontak</a>
-            </div>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-text">
+    <p class="label">Fasilitas di SMK Negeri 1 Banyuwangi</p>
+    <h1>FO (Front Office)</h1>
+    <p>Sebagai pusat informasi, pelayanan tamu (check-in/check-out), penanganan reservasi, manajemen keluhan di SMK Negeri 1 Banyuwangi.</p>
+  </div>
+</div>
 
-            <a id="btnLogin"
-            href="login.html"
-            class="bg-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-700 transition lg:block hidden text-center">
-            Login
-            </a>
+<!-- FACILITIES GRID -->
+<section class="facilities">
+  <div class="section-header">
+    <h2>Semua Fasilitas</h2>
+    <p>Fasilitas lengkap untuk mendukung kegiatan belajar mengajar</p>
+  </div>
+  <div class="facilities-grid">
 
-            <!-- Mobile Toggle -->
-            <button class="lg:hidden text-2xl" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
+    <div class="facility-card">
+      <img src="https://www.figma.com/api/mcp/asset/0ff180b9-fce2-459d-a05c-d7ca97d834e8" alt="Lapangan Bola Voli" />
+      <div class="overlay"></div>
+      <div class="info">
+        <div class="school">SMK Negeri 1 Banyuwangi</div>
+        <div class="name">Lapangan Bola Voli</div>
+      </div>
+    </div>
 
-            <!-- Mobile Toggle -->
-            <button class="lg:hidden text-2xl" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
+    <div class="facility-card">
+      <img src="https://www.figma.com/api/mcp/asset/370bd447-0926-4fd8-bff3-d78f94167bfa" alt="Edotel" />
+      <div class="overlay"></div>
+      <div class="info">
+        <div class="school">SMK Negeri 1 Banyuwangi</div>
+        <div class="name">Edotel</div>
+      </div>
+    </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t p-6 space-y-4 shadow-xl">
-            <a href="index.html" class="block font-semibold">Beranda</a>
-           
-            <button id="btnProfilMobile" class="w-full text-left font-semibold flex items-center justify-between">
-                Profil
-                <i class="fas fa-chevron-down text-xs"></i>
-            </button>
+    <div class="facility-card">
+      <img src="https://www.figma.com/api/mcp/asset/2eb82331-1eaf-4ca4-9816-ce3d84e10064" alt="Ruang BK" />
+      <div class="overlay"></div>
+      <div class="info">
+        <div class="school">SMK Negeri 1 Banyuwangi</div>
+        <div class="name">Ruang BK</div>
+      </div>
+    </div>
 
-            <!-- Dropdown Mobile -->
-            <div id="dropdownProfilMobile" class="hidden bg-gray-100 rounded-lg p-3 space-y-2">
-                <a href="profil.html#visi-misi" class="block py-2 px-3 hover:bg-gray-200 rounded">Visi & Misi</a>
-                <a href="profil.html#fasilitas" class="block py-2 px-3 hover:bg-gray-200 rounded">Fasilitas</a>
-                <a href="profil.html#ekstrakulikuler" class="block py-2 px-3 hover:bg-gray-200 rounded">Ekstrakulikuler</a>
-                <a href="profil.html#sambutan" class="block py-2 px-3 hover:bg-gray-200 rounded">Sambutan Kepala</a>
-            </div>
-        
-            <a href="jurusan.html" class="block font-semibold">Jurusan</a>
-            <a href="ppdb.html" class="block font-semibold text-red-500">PPDB 2026</a>
-            <a href="galeri.html" class="block font-semibold">Galeri</a>
-            <a href="#" class="block font-semibold">Kontak</a>
-        </div>
-    </nav>
+    <div class="facility-card">
+      <img src="https://www.figma.com/api/mcp/asset/1e5314aa-dbbc-4faf-8c17-53ceccaa2aad" alt="Ruang UKS" />
+      <div class="overlay"></div>
+      <div class="info">
+        <div class="school">SMK Negeri 1 Banyuwangi</div>
+        <div class="name">Ruang UKS</div>
+      </div>
+    </div>
 
+    <div class="facility-card">
+      <img src="https://www.figma.com/api/mcp/asset/57ae1a7c-3d49-4a8a-ba13-062e09e6b9e2" alt="Ruang OSIS" />
+      <div class="overlay"></div>
+      <div class="info">
+        <div class="school">SMK Negeri 1 Banyuwangi</div>
+        <div class="name">Ruang OSIS</div>
+      </div>
+    </div>
 
-    <header class="pt-24 pb-16 relative">
-        <div class="container mx-auto px-6 text-center">
-            <span class="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 text-[10px] font-black tracking-[0.3em] uppercase rounded-full mb-6 border border-blue-100 shadow-sm">World Class Infrastructure</span>
-            <h2 class="text-5xl md:text-7xl font-extrabold mb-8 tracking-tighter text-slate-900">
-                Fasilitas <br> <span class="gradient-text">SMK Negeri 1 banyuwangi.</span>
-            </h2>
-            <p class="text-slate-500 max-w-2xl mx-auto text-lg md:text-xl font-medium leading-relaxed">
-                Kami menyediakan ekosistem belajar digital yang dirancang untuk melampaui standar industri modern.
-            </p>
-        </div>
-    </header>
+    <div class="facility-card">
+      <img src="https://www.figma.com/api/mcp/asset/8b28ab2a-80a0-4a58-8b6e-fcb1fef21d05" alt="Koperasi" />
+      <div class="overlay"></div>
+      <div class="info">
+        <div class="school">SMK Negeri 1 Banyuwangi</div>
+        <div class="name">Koperasi</div>
+      </div>
+    </div>
 
-    <!-- Fasilitas -->
-    <section class="pb-32">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-                
-                
-                
-                <!-- Lab IT -->
-                <div class="lg:col-span-8 glass-card rounded-[2.5rem] overflow-hidden group">
-                    <div class="grid grid-cols-1 md:grid-cols-2 h-full">
-                        <div class="p-10 md:p-14 flex flex-col justify-center">
-                            <div class="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-8 shadow-xl shadow-blue-200">
-                                <i class="fas fa-microchip"></i>
-                            </div>
-                            <h3 class="text-3xl font-extrabold mb-4 text-slate-900">LAB. Komputer</h3>
-                            <p class="text-slate-500 font-medium mb-8 leading-relaxed">
-                                Pusat riset teknologi dengan workstation bertenaga tinggi untuk pengembangan Game, AI, dan Cyber Security.
-                            </p>
-                        </div>
-                        <div class="relative overflow-hidden min-h-[300px]">
-                            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" alt="Lab IT" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
-                        </div>
-                    </div>
-                </div>
+    <div class="facility-card">
+      <img src="https://www.figma.com/api/mcp/asset/9f20662f-694b-4319-8e27-556861652908" alt="Kantin" />
+      <div class="overlay"></div>
+      <div class="info">
+        <div class="school">SMK Negeri 1 Banyuwangi</div>
+        <div class="name">Kantin</div>
+      </div>
+    </div>
 
-                <!-- Hotel -->
-                <div class="lg:col-span-4 glass-card rounded-[2.5rem] p-10 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-8 shadow-xl shadow-indigo-200">
-                            <i class="fas fa-concierge-bell"></i>
-                        </div>
-                        <h3 class="text-2xl font-extrabold mb-4 text-slate-900"> Edotel</h3>
-                        <p class="text-slate-500 font-medium text-sm leading-relaxed mb-8">
-                            Fasilitas penginapan bintang 4 yang dikelola secara profesional oleh talenta muda SMKN 1 Banyuwangi.
-                        </p>
-                    </div>
-                    <div class="rounded-3xl overflow-hidden h-48">
-                        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                    </div>
-                </div>
+    <div class="facility-card">
+      <img src="https://www.figma.com/api/mcp/asset/a65cda39-a09f-4532-a5aa-adbadc272013" alt="Masjid" />
+      <div class="overlay"></div>
+      <div class="info">
+        <div class="school">SMK Negeri 1 Banyuwangi</div>
+        <div class="name">Masjid</div>
+      </div>
+    </div>
 
-                <!-- masjid -->
-                <div class="lg:col-span-4 glass-card rounded-[2.5rem] p-10 group order-last lg:order-none">
-                    <div class="w-14 h-14 bg-rose-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-8 shadow-xl shadow-rose-200">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h4 class="text-2xl font-extrabold mb-4 text-slate-900">Masjid</h4>
-                    <p class="text-slate-500 font-medium text-sm leading-relaxed mb-8">
-                        Ruang ibadah modern dilengkapi dengan teknologi audio-visual untuk mendukung kegiatan keagamaan dan pembelajaran iteraktif.
-                    </p>
-                    <div class="aspect-video rounded-3xl overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:rotate-2 group-hover:scale-110 transition-transform duration-700">
-                    </div>
-                </div>
+  </div>
+</section>
 
-                <!--(bawah) Library -->
-                <div class="lg:col-span-8 glass-card rounded-[2.5rem] p-10 md:p-14 overflow-hidden relative">
-                    <div class="relative z-10 flex flex-col md:flex-row gap-12 items-center">
-                        <div class="flex-1">
-                            <h4 class="text-3xl font-extrabold mb-6 text-slate-900 leading-tight">Smart Library & <br> Collaborative Space</h4>
-                            <p class="text-slate-500 font-medium mb-8">
-                                Bukan sekadar tempat membaca, tapi pusat kolaborasi ide dengan akses digital tanpa batas.
-                            </p>
-                            <div class="grid grid-cols-2 gap-6">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600"><i class="fas fa-wifi"></i></div>
-                                    <span class="text-xs font-bold text-slate-700 tracking-tighter uppercase">Hi-Speed Wi-Fi</span>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center text-green-600"><i class="fas fa-coffee"></i></div>
-                                    <span class="text-xs font-bold text-slate-700 tracking-tighter uppercase">Co-Working Area</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-full md:w-1/2 rounded-[2rem] overflow-hidden shadow-2xl rotate-2">
-                            <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
-                        </div>
-                    </div>
-                </div>
+<!-- DETAIL: Lapangan Voli -->
+<div class="detail-section">
+  <div class="detail-inner">
+    <div class="detail-img">
+      <img src="https://www.figma.com/api/mcp/asset/0ff180b9-fce2-459d-a05c-d7ca97d834e8" alt="Lapangan Voli" />
+    </div>
+    <div class="detail-body">
+      <span class="tag">Olahraga</span>
+      <h3>Lapangan Bola Voli</h3>
+      <p>Lapangan bola voli yang representatif untuk kegiatan olahraga siswa dan turnamen antar kelas. Dilengkapi dengan fasilitas yang memadai untuk mendukung prestasi siswa di bidang olahraga.</p>
+    </div>
+  </div>
+</div>
 
-                <div class="lg:col-span-8 glass-card rounded-[2.5rem] overflow-hidden group">
-                    <div class="grid grid-cols-1 md:grid-cols-2 h-full">
-                        <div class="p-10 md:p-14 flex flex-col justify-center">
-                            <div class="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-8 shadow-xl shadow-blue-200">
-                                <i class="fas fa-microchip"></i>
-                            </div>
-                            <h3 class="text-3xl font-extrabold mb-4 text-slate-900">Ruang guru</h3>
-                            <p class="text-slate-500 font-medium mb-8 leading-relaxed">
-                                Fasilitas untuk tenaga kependidikan dengan pendukung teknologi canggih untuk meningkatkan produktivitas dan kaloborasi antar guru.
-                            </p>
-                        </div>
-                        <div class="relative overflow-hidden min-h-[300px]">
-                            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" alt="Lab IT" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:col-span-4 glass-card rounded-[2.5rem] p-10 group order-last lg:order-none">
-                    <div class="w-14 h-14 bg-rose-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-8 shadow-xl shadow-rose-200">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h4 class="text-2xl font-extrabold mb-4 text-slate-900">Ruang Bimbingan Konseling (RBK)</h4>
-                    <p class="text-slate-500 font-medium text-sm leading-relaxed mb-8">
-                        Tempat yang nyaman dan aman untuk siswa mendapat bimbingan akademik maupun personal dengan dukungan teknologi untuk sesi konseling.
-                    </p>
-                    <div class="aspect-video rounded-3xl overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:rotate-2 group-hover:scale-110 transition-transform duration-700">
-                    </div>
-                </div>
-                <div class="lg:col-span-4 glass-card rounded-[2.5rem] p-10 group order-last lg:order-none">
-                    <div class="w-14 h-14 bg-rose-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-8 shadow-xl shadow-rose-200">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h4 class="text-2xl font-extrabold mb-4 text-slate-900"> Ruang Front Office(FO)</h4>
-                    <p class="text-slate-500 font-medium text-sm leading-relaxed mb-8">
-                        Ruang pelayanan administrasi yang modern dan efisien untuk mendukung kebutuhan siswa, orang tua,dan pengunjung dengan sistem dan layanan yang terintegrasi.
-                    </p>
-                    <div class="aspect-video rounded-3xl overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:rotate-2 group-hover:scale-110 transition-transform duration-700">
-                    </div>
-                </div>
-                <div class="lg:col-span-8 glass-card rounded-[2.5rem] overflow-hidden group">
-                    <div class="grid grid-cols-1 md:grid-cols-2 h-full">
-                        <div class="p-10 md:p-14 flex flex-col justify-center">
-                            <div class="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-8 shadow-xl shadow-blue-200">
-                                <i class="fas fa-microchip"></i>
-                            </div>
-                            <h3 class="text-3xl font-extrabold mb-4 text-slate-900">Ruang guru</h3>
-                            <p class="text-slate-500 font-medium mb-8 leading-relaxed">
-                                Fasilitas untuk tenaga kependidikan dengan pendukung teknologi canggih untuk meningkatkan produktivitas dan kaloborasi antar guru.
-                            </p>
-                        </div>
-                        <div class="relative overflow-hidden min-h-[300px]">
-                            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" alt="Lab IT" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:col-span-4 glass-card rounded-[2.5rem] p-10 group order-last lg:order-none">
-                    <div class="w-14 h-14 bg-rose-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-8 shadow-xl shadow-rose-200">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h4 class="text-2xl font-extrabold mb-4 text-slate-900">lapangan Basket</h4>
-                    <p class="text-slate-500 font-medium text-sm leading-relaxed mb-8">
-                        Lapangan olahraga serbaguna dengan fasilitas lengkap untuk mendukung kegiatan ekstrakulikuler dan kompetisi olahraga tingkat sekolah maupun antar sekolah.
-                    </p>
-                    <div class="aspect-video rounded-3xl overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:rotate-2 group-hover:scale-110 transition-transform duration-700">
-                    </div>
-                </div>
-                <div class="lg:col-span-8 glass-card rounded-[2.5rem] overflow-hidden group">
-                    <div class="grid grid-cols-1 md:grid-cols-2 h-full">
-                        <div class="p-10 md:p-14 flex flex-col justify-center">
-                            <div class="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-8 shadow-xl shadow-blue-200">
-                                <i class="fas fa-microchip"></i>
-                            </div>
-                            <h3 class="text-3xl font-extrabold mb-4 text-slate-900">Kantin</h3>
-                            <p class="text-slate-500 font-medium mb-8 leading-relaxed">
-                                Fasilitas kantin modern dengan konsep food cour yang menyediakan berbagai pilihan makanan sehat dan bergizi untuk mendukung siswa dalam menjalani aktivitas belajar dengan energi yang optimal.
-                            </p>
-                        </div>
-                        <div class="relative overflow-hidden min-h-[300px]">
-                            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" alt="Lab IT" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
-                        </div>
-                    </div>
-            </div>
-        </div>
-    </section>
+<!-- DETAIL: Edotel -->
+<div class="detail-section">
+  <div class="detail-inner reverse">
+    <div class="detail-img">
+      <img src="https://www.figma.com/api/mcp/asset/370bd447-0926-4fd8-bff3-d78f94167bfa" alt="Edotel" />
+    </div>
+    <div class="detail-body">
+      <span class="tag">Praktek Jurusan</span>
+      <h3>Edotel</h3>
+      <p>Tempat praktek jurusan Perhotelan yang menyerupai hotel sungguhan. Siswa belajar langsung tentang layanan front office, housekeeping, food &amp; beverage, serta standar operasional hotel internasional.</p>
+    </div>
+  </div>
+</div>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-white pt-32 pb-12 rounded-t-[4rem] relative overflow-hidden">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-blue-600/20 blur-[120px]"></div>
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
-                <div class="lg:col-span-5 space-y-8">
-                    <div class="flex items-center gap-4">
-                        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-slate-900 font-black text-2xl shadow-xl">S</div>
-                        <h1 class="font-extrabold text-2xl tracking-tighter">SMKN 1 <span class="text-blue-400">Banyuwangi</span></h1>
-                    </div>
-                    <p class="text-slate-400 font-medium leading-relaxed max-w-sm">
-                        Mencetak tenaga kerja profesional yang berdaya saing global, inovatif, dan bertaqwa kepada Tuhan Yang Maha Esa.
-                    </p>
-                    <div class="flex gap-6">
-                        <a href="#" class="text-slate-400 hover:text-white transition-colors text-xl"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="text-slate-400 hover:text-white transition-colors text-xl"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-slate-400 hover:text-white transition-colors text-xl"><i class="fab fa-tiktok"></i></a>
-                    </div>
-                </div>
+<!-- DETAIL: Ruang BK -->
+<div class="detail-section">
+  <div class="detail-inner">
+    <div class="detail-img">
+      <img src="https://www.figma.com/api/mcp/asset/2eb82331-1eaf-4ca4-9816-ce3d84e10064" alt="Ruang BK" />
+    </div>
+    <div class="detail-body">
+      <span class="tag">Layanan Siswa</span>
+      <h3>Ruang BK</h3>
+      <p>Ruang Bimbingan dan Konseling yang nyaman untuk membantu siswa dalam pengembangan diri, konsultasi karir, serta penanganan masalah akademik maupun personal secara profesional.</p>
+    </div>
+  </div>
+</div>
 
-                <div class="lg:col-span-3">
-                    <h5 class="text-sm font-black uppercase tracking-[0.3em] mb-10 text-blue-400">Eksplorasi</h5>
-                    <ul class="space-y-5 text-slate-400 font-bold text-sm">
-                        <li><a href="#" class="hover:text-blue-400 transition">Visi & Misi</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition">Kurikulum</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition">Fasilitas Sekolah</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition">Pendaftaran Siswa</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition">Ekstrakulikuler</a></li>
-                    </ul>
-                </div>
+<!-- DETAIL: UKS -->
+<div class="detail-section">
+  <div class="detail-inner reverse">
+    <div class="detail-img">
+      <img src="https://www.figma.com/api/mcp/asset/1e5314aa-dbbc-4faf-8c17-53ceccaa2aad" alt="UKS" />
+    </div>
+    <div class="detail-body">
+      <span class="tag">Kesehatan</span>
+      <h3>Ruang UKS</h3>
+      <p>Unit Kesehatan Sekolah yang dilengkapi peralatan medis dasar dan tenaga kesehatan untuk memberikan pertolongan pertama serta layanan kesehatan bagi seluruh warga sekolah.</p>
+    </div>
+  </div>
+</div>
 
-                <div class="lg:col-span-4">
-                    <h5 class="text-sm font-black uppercase tracking-[0.3em] mb-10 text-blue-400">Hubungi Kami</h5>
-                    <div class="space-y-6 text-slate-400 text-sm font-medium">
-                        <p class="flex gap-4"><i class="fas fa-map-marker-alt text-blue-400 mt-1"></i> Jl. Wijaya Kusuma No. 46, Mojopanggung, Banyuwangi</p>
-                        <p class="flex gap-4"><i class="fas fa-phone-alt text-blue-400"></i> (0333) 424541</p>
-                        <p class="flex gap-4"><i class="fas fa-paper-plane text-blue-400"></i> smkn1bwi_wk46@yahoo.co.id</p>
-                    </div>
-                </div>
-            </div>
+<!-- DETAIL: OSIS -->
+<div class="detail-section">
+  <div class="detail-inner">
+    <div class="detail-img">
+      <img src="https://www.figma.com/api/mcp/asset/57ae1a7c-3d49-4a8a-ba13-062e09e6b9e2" alt="Ruang OSIS" />
+    </div>
+    <div class="detail-body">
+      <span class="tag">Organisasi Siswa</span>
+      <h3>Ruang OSIS</h3>
+      <p>Ruang kegiatan Organisasi Intra Sekolah sebagai pusat perencanaan dan koordinasi kegiatan kesiswaan, pengembangan kepemimpinan, serta kegiatan ekstrakurikuler.</p>
+    </div>
+  </div>
+</div>
 
-            
-            
-            <div class="pt-10 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-6">
-                <p class="text-slate-500 text-xs font-bold uppercase tracking-widest">&copy; 2026 SMK Negeri 1 Banyuwangi. All Rights Reserved.</p>
-                <div class="flex gap-8 text-[10px] font-black uppercase tracking-widest text-slate-500">
-                    <a href="#" class="hover:text-white">Privacy Policy</a>
-                    <a href="#" class="hover:text-white">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+<!-- DETAIL: Koperasi -->
+<div class="detail-section">
+  <div class="detail-inner reverse">
+    <div class="detail-img">
+      <img src="https://www.figma.com/api/mcp/asset/8b28ab2a-80a0-4a58-8b6e-fcb1fef21d05" alt="Koperasi" />
+    </div>
+    <div class="detail-body">
+      <span class="tag">Ekonomi Sekolah</span>
+      <h3>Koperasi</h3>
+      <p>Koperasi sekolah yang menyediakan kebutuhan alat tulis, seragam, dan kebutuhan belajar siswa dengan harga terjangkau. Sekaligus menjadi wahana pembelajaran wirausaha bagi siswa.</p>
+    </div>
+  </div>
+</div>
 
-    <script>
-        // Logik Autentikasi User
-        const btnLogin = document.getElementById("btnLogin");
-        const nama = localStorage.getItem("namaSiswa");
-        const welcomeText = document.getElementById("welcome");
+<!-- DETAIL: Kantin -->
+<div class="detail-section">
+  <div class="detail-inner">
+    <div class="detail-img">
+      <img src="https://www.figma.com/api/mcp/asset/9f20662f-694b-4319-8e27-556861652908" alt="Kantin" />
+    </div>
+    <div class="detail-body">
+      <span class="tag">Konsumsi</span>
+      <h3>Kantin</h3>
+      <p>Kantin sekolah yang bersih dan nyaman menyajikan beragam pilihan makanan dan minuman sehat dengan harga terjangkau untuk mendukung kebutuhan gizi siswa selama jam sekolah.</p>
+    </div>
+  </div>
+</div>
 
-        if (nama) {
-            if (welcomeText) {
-               welcomeText.innerHTML = "Selamat datang, <b>" + nama + "</b> 🏫";
-            }
-            btnLogin.innerHTML = "Logout";
-            btnLogin.classList.add("bg-rose-600", "hover:bg-rose-700");
-            btnLogin.classList.remove("bg-slate-900");
-            btnLogin.removeAttribute("href");
-            btnLogin.onclick = function() {
-                localStorage.removeItem("namaSiswa");
-                window.location.reload();
-            };
-        } else {
-            if (welcomeText) {
-                welcomeText.innerHTML = "Status: Guest Mode";
-            }
-        }
+<!-- DETAIL: Masjid -->
+<div class="detail-section">
+  <div class="detail-inner reverse">
+    <div class="detail-img">
+      <img src="https://www.figma.com/api/mcp/asset/a65cda39-a09f-4532-a5aa-adbadc272013" alt="Masjid" />
+    </div>
+    <div class="detail-body">
+      <span class="tag">Keagamaan</span>
+      <h3>Masjid</h3>
+      <p>Masjid sekolah yang representatif sebagai sarana ibadah dan kegiatan keagamaan seluruh warga sekolah, mendukung pembentukan karakter siswa yang bertakwa dan berakhlak mulia.</p>
+    </div>
+  </div>
+</div>
 
-        // Mobile dropdown Profil
-        const btnProfilMobile = document.getElementById("btnProfilMobile");
-        const dropdownProfilMobile = document.getElementById("dropdownProfilMobile");
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="f-logo">SMKN 1 Banyuwangi</div>
+    <p style="margin-top:6px">Jalan Wijaya Kusuma No.46, Banyuwangi</p>
+  </div>
+  <p>© 2026 SMK Negeri 1 Banyuwangi. All rights reserved.</p>
+</footer>
 
-        if (btnProfilMobile && dropdownProfilMobile) {
-            btnProfilMobile.addEventListener("click", function(e) {
-                e.stopPropagation();
-                dropdownProfilMobile.classList.toggle("hidden");
-            });
-        }
-    </script>
 </body>
 </html>
