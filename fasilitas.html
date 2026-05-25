@@ -4,58 +4,53 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fasilitas – SMKN 1 Banyuwangi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Lato', sans-serif; background: #000; color: #fff; overflow-x: hidden; }
+    /* Navbar transparan */
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.0);
+      backdrop-filter: blur(0px);
+      transition: background 0.4s, backdrop-filter 0.4s;
+    }
+    .glass-nav.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .glass-nav.scrolled a,
+    .glass-nav.scrolled button { color: #374151; }
+    .glass-nav.scrolled .nav-logo-title { color: #1e3a8a; }
+    .glass-nav.scrolled .nav-logo-sub { color: #6b7280; }
 
-    /* ── NAVBAR ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      height: 87px;
-      background: rgba(10,10,10,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      display: flex; align-items: center;
-      padding: 0 40px; gap: 24px;
-    }
-    .nav-logo { display: flex; align-items: center; gap: 12px; margin-right: auto; }
-    .nav-logo .logo-box {
-      width: 54px; height: 54px;
-      background: linear-gradient(135deg,#1a6fcf,#0d4a9e);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Lalezar', sans-serif; font-size: 28px; color: #fff;
-    }
-    .nav-logo .school-name strong { display: block; font-size: 18px; font-weight: 700; }
-    .nav-logo .school-name span  { font-size: 13px; color: #aaa; }
-    nav a { color: #ccc; text-decoration: none; font-size: 15px; transition: color .2s; }
-    nav a:hover, nav a.active { color: #fff; }
-    .nav-login {
-      background: #1a6fcf; color: #fff !important;
-      padding: 8px 22px; border-radius: 8px; font-weight: 700;
+    /* saat transparan, teks putih */
+    .nav-link-default { color: rgba(255,255,255,0.9); }
+    .glass-nav.scrolled .nav-link-default { color: #374151; }
+    .glass-nav.scrolled .nav-link-default:hover { color: #2563eb; }
+
+    .badge-new { animation: pulse 2s infinite; }
+    @keyframes pulse {
+      0%,100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
     }
 
-    /* ── HERO WRAPPER ── */
+    /* ── HERO ── */
     .hero {
       position: relative;
-      width: 100%;
-      height: 100vh; min-height: 640px;
+      width: 100%; height: 100vh; min-height: 640px;
       overflow: hidden;
     }
-
-    /* background foto */
     .hero-bg {
       position: absolute; inset: 0;
-      background: url('https://www.figma.com/api/mcp/asset/12492e84-9952-4ac2-8f30-f0c10ad5156a') center/cover no-repeat;
+      background: url('assets/img/FO.jpeg') center/cover no-repeat;
     }
     .hero-bg::after {
       content: '';
       position: absolute; inset: 0;
-      background: rgba(0,0,0,0.3);
+      background: rgba(0,0,0,0.32);
     }
-
-    /* teks kiri bawah */
     .hero-text {
       position: absolute;
       left: 68px; bottom: 140px;
@@ -64,30 +59,27 @@
     .hero-text .label { font-size: 20px; color: #fff; margin-bottom: 4px; }
     .hero-text h1 {
       font-family: 'Lalezar', sans-serif;
-      font-size: 64px; line-height: 1; color: #fff;
-      margin-bottom: 16px;
+      font-size: 64px; line-height: 1; color: #fff; margin-bottom: 14px;
     }
-    .hero-text p { font-size: 20px; line-height: 1.6; color: #fff; }
+    .hero-text p { font-size: 18px; line-height: 1.65; color: rgba(255,255,255,0.9); }
 
-    /* ── CARD SCROLL STRIP ── */
-    /* posisi: dari 50% + 12px ke kanan, atas ~370px dari hero, tinggi 442px */
+    /* ── CARD STRIP ── */
     .card-strip-wrapper {
       position: absolute;
       left: calc(50% + 12px);
-      top: 370px;
-      width: calc(50% - 12px); /* viewport kanan */
-      height: 442px;
+      top: 240px;
+      width: calc(50% - 12px);
+      height: 360px;
       z-index: 3;
-      overflow: hidden; /* clip overflow kanan */
+      overflow: hidden;
     }
-
     .card-strip {
       display: flex;
       flex-direction: row;
-      align-items: center;
-      gap: 21px; /* jarak antar card: 349-228-78=43, tapi ada padding, approx 21px gap */
+      align-items: flex-start;
+      gap: 21px;
       height: 100%;
-      padding: 102px 0 0 78px;
+      padding: 20px 40px 0 78px;
       overflow-x: auto;
       overflow-y: hidden;
       scroll-snap-type: x mandatory;
@@ -106,11 +98,10 @@
       border-radius: 8px;
       overflow: hidden;
       scroll-snap-align: start;
+      transition: transform 0.3s;
     }
-    .facility-card img {
-      width: 100%; height: 100%; object-fit: cover;
-      display: block;
-    }
+    .facility-card:hover { transform: scale(1.03); }
+    .facility-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .facility-card .card-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(to bottom, rgba(0,0,0,0.3) 88%, rgba(102,102,102,0.3) 100%);
@@ -118,69 +109,152 @@
     .facility-card .card-info {
       position: absolute; bottom: 18px; left: 18px; right: 8px;
     }
-    .facility-card .card-school {
-      font-size: 15px; color: #fff; margin-bottom: 2px; display: block;
-    }
+    .facility-card .card-school { font-size: 14px; color: #fff; display: block; margin-bottom: 2px; font-family: 'Lato', sans-serif; }
     .facility-card .card-name {
       font-family: 'Lalezar', sans-serif;
       font-size: 20px; color: #fff; line-height: 1.2;
     }
-    .facility-card .card-name.big { font-size: 32px; }
 
-    /* ── FOOTER ── */
-    footer {
-      background: #050505; padding: 60px;
-      border-top: 1px solid rgba(255,255,255,.06);
-      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+    /* ── FASILITAS SECTION (putih) ── */
+    .facility-detail {
+      background: #fff;
+      padding: 80px 60px;
     }
-    footer .f-logo { font-family: 'Lalezar', sans-serif; font-size: 22px; }
-    footer p { color: #555; font-size: 13px; }
+    .facility-detail h2 {
+      font-family: 'Lalezar', sans-serif;
+      font-size: 36px; color: #1e3a8a; margin-bottom: 8px;
+    }
+    .facility-detail p.sub { color: #6b7280; margin-bottom: 48px; font-size: 15px; }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .detail-card {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      background: #fff;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .detail-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.14);
+    }
+    .detail-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+    .detail-card .d-body { padding: 20px 22px 24px; }
+    .detail-card .d-tag {
+      display: inline-block;
+      background: #eff6ff; color: #2563eb;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 99px; margin-bottom: 10px;
+    }
+    .detail-card .d-name {
+      font-family: 'Lalezar', sans-serif;
+      font-size: 22px; color: #1e3a8a; margin-bottom: 8px;
+    }
+    .detail-card .d-desc { font-size: 14px; color: #6b7280; line-height: 1.65; }
+
+    /* dropdown */
+    .group:hover .group-hover\:opacity-100 { opacity: 1; visibility: visible; }
 
     @media (max-width: 900px) {
-      .hero-text { left: 24px; bottom: 80px; }
+      .hero-text { left: 24px; bottom: 60px; }
       .hero-text h1 { font-size: 40px; }
       .card-strip-wrapper { left: 0; width: 100%; top: auto; bottom: 0; height: 260px; }
       .card-strip { padding: 20px 0 0 20px; }
       .facility-card { width: 180px; height: 220px; }
+      .facility-detail { padding: 60px 24px; }
     }
   </style>
 </head>
-<body>
+<body class="bg-white text-gray-900">
 
-<!-- NAVBAR -->
-<nav>
-  <div class="nav-logo">
-    <div class="logo-box">S</div>
-    <div class="school-name">
-      <strong>SMKN 1 Banyuwangi</strong>
-      <span>Banyuwangi</span>
+<!-- ── NAVBAR ── -->
+<nav class="glass-nav sticky top-0 z-50" id="mainNav">
+  <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+        <img src="assets/img/sekolah logo (1).png" alt="" onerror="this.style.display='none'" />
+      </div>
+      <div>
+        <h1 class="font-bold text-lg leading-tight nav-logo-title" style="color:#fff">SMKN 1 Banyuwangi</h1>
+        <p id="welcome" class="text-blue-300 font-semibold text-sm"></p>
+        <p class="text-xs nav-logo-sub uppercase tracking-widest" style="color:rgba(255,255,255,0.6)">Banyuwangi</p>
+      </div>
     </div>
+
+    <!-- Desktop menu -->
+    <div class="hidden lg:flex items-center gap-8 font-semibold">
+      <a href="index.html" class="nav-link-default hover:text-blue-300 transition">Beranda</a>
+      <div class="relative group">
+        <button class="nav-link-default hover:text-blue-300 transition flex items-center gap-1">
+          Profil <i class="fas fa-chevron-down text-xs"></i>
+        </button>
+        <div class="absolute left-0 mt-2 w-56 bg-white shadow-xl rounded-lg py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 z-50">
+          <a href="sambutan.html" class="block px-5 py-3 hover:bg-gray-100 text-gray-700 font-normal">Sambutan Kepala Sekolah</a>
+          <a href="visi.html" class="block px-5 py-3 hover:bg-gray-100 text-gray-700 font-normal">Visi &amp; Misi</a>
+          <a href="fasilitas.html" class="block px-5 py-3 hover:bg-gray-100 text-blue-600 font-semibold bg-blue-50">Fasilitas</a>
+          <a href="ekstrakulikuler.html" class="block px-5 py-3 hover:bg-gray-100 text-gray-700 font-normal">Ekstrakulikuler</a>
+        </div>
+      </div>
+      <a href="jurusan.html" class="nav-link-default hover:text-blue-300 transition">Jurusan</a>
+      <a href="https://spmbjatim.net/" class="nav-link-default hover:text-blue-300 transition flex items-center">
+        SPMB 2026
+        <span class="ml-2 px-2 py-0.5 bg-red-500 text-white text-[10px] rounded-full badge-new">NEW</span>
+      </a>
+      <a href="galeri.html" class="nav-link-default hover:text-blue-300 transition">Galeri</a>
+      <a href="#" class="nav-link-default hover:text-blue-300 transition">Kontak</a>
+    </div>
+
+    <a id="btnLogin" href="login.html"
+       class="bg-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-700 transition lg:block hidden text-center">
+      Login
+    </a>
+
+    <button class="lg:hidden text-2xl nav-link-default" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+      <i class="fas fa-bars"></i>
+    </button>
   </div>
-  <a href="#">Beranda</a>
-  <a href="#">Profil</a>
-  <a href="#">Jurusan</a>
-  <a href="#" class="active">Fasilitas</a>
-  <a href="#">Kontak</a>
-  <a href="#" class="nav-login">Login</a>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-white border-t p-6 space-y-4 shadow-xl">
+    <a href="index.html" class="block font-semibold text-gray-700">Beranda</a>
+    <button id="btnProfilMobile" class="w-full text-left font-semibold flex items-center justify-between text-gray-700"
+            onclick="document.getElementById('dropdownProfilMobile').classList.toggle('hidden')">
+      Profil <i class="fas fa-chevron-down text-xs"></i>
+    </button>
+    <div id="dropdownProfilMobile" class="hidden bg-gray-100 rounded-lg p-3 space-y-2">
+      <a href="sambutan.html" class="block py-2 px-3 hover:bg-gray-200 rounded text-gray-700">Sambutan Kepala Sekolah</a>
+      <a href="visi.html" class="block py-2 px-3 hover:bg-gray-200 rounded text-gray-700">Visi &amp; Misi</a>
+      <a href="fasilitas.html" class="block py-2 px-3 bg-blue-50 text-blue-600 font-semibold rounded">Fasilitas</a>
+      <a href="ekstrakulikuler.html" class="block py-2 px-3 hover:bg-gray-200 rounded text-gray-700">Ekstrakulikuler</a>
+    </div>
+    <a href="jurusan.html" class="block font-semibold text-gray-700">Jurusan</a>
+    <a href="https://spmbjatim.net" class="block font-semibold text-red-500">SPMB 2026</a>
+    <a href="galeri.html" class="block font-semibold text-gray-700">Galeri</a>
+    <a href="#" class="block font-semibold text-gray-700">Kontak</a>
+  </div>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
+<!-- ── HERO ── -->
+<div class="hero" style="margin-top:-87px">
   <div class="hero-bg"></div>
 
-  <!-- Teks kiri bawah -->
   <div class="hero-text">
     <p class="label">Fasilitas di SMK Negeri 1 Banyuwangi</p>
     <h1>FO (Front Office)</h1>
     <p>sebagai pusat informasi, pelayanan tamu (check-in/check-out), penanganan reservasi, manajemen keluhan di SMK Negeri 1 Banyuwangi</p>
   </div>
 
-  <!-- Card strip: muncul di kanan, scroll ke samping -->
+  <!-- Card scroll horizontal di kanan -->
   <div class="card-strip-wrapper">
     <div class="card-strip" id="cardStrip">
 
       <div class="facility-card">
-        <img src="https://www.figma.com/api/mcp/asset/84bdb67a-1037-4d8f-955a-c871e119480f" alt="Lapangan Bola Voli" />
+        <img src="assets/img/lapangan.jpeg" alt="Lapangan Bola Voli" />
         <div class="card-overlay"></div>
         <div class="card-info">
           <span class="card-school">SMK Negeri 1 Banyuwangi</span>
@@ -189,34 +263,34 @@
       </div>
 
       <div class="facility-card">
-        <img src="https://www.figma.com/api/mcp/asset/2fbf4f4f-2b49-42e1-a264-d136a1f6105a" alt="Ruang BK" />
+        <img src="assets/img/BK.jpeg" alt="Ruang BK" />
         <div class="card-overlay"></div>
         <div class="card-info">
           <span class="card-school">SMK Negeri 1 Banyuwangi</span>
-          <div class="card-name">Ruang BK(Bimbingan Konseling)</div>
+          <div class="card-name">Ruang BK</div>
         </div>
       </div>
 
       <div class="facility-card">
-        <img src="https://www.figma.com/api/mcp/asset/8f142fad-d1fd-41a3-8848-8358ab6d66b5" alt="Edotel" />
+        <img src="assets/img/edotel.jpeg" alt="Edotel" />
         <div class="card-overlay"></div>
         <div class="card-info">
           <span class="card-school">SMK Negeri 1 Banyuwangi</span>
-          <div class="card-name">Edotel (tempat praktek jurusan perhotelan)</div>
+          <div class="card-name">Edotel</div>
         </div>
       </div>
 
       <div class="facility-card">
-        <img src="https://www.figma.com/api/mcp/asset/92ed94c3-d3ac-448b-9452-3ee3187c0c5d" alt="Ruang UKS" />
+        <img src="assets/img/uks.jpeg" alt="Ruang UKS" />
         <div class="card-overlay"></div>
         <div class="card-info">
           <span class="card-school">SMK Negeri 1 Banyuwangi</span>
-          <div class="card-name">Ruang UKS(Unit Kesehatan Sekolah)</div>
+          <div class="card-name">Ruang UKS</div>
         </div>
       </div>
 
       <div class="facility-card">
-        <img src="https://www.figma.com/api/mcp/asset/d7bca32d-df3b-4251-8770-f71b4eec4884" alt="Ruang OSIS" />
+        <img src="assets/img/ruang osis.jpeg" alt="Ruang OSIS" />
         <div class="card-overlay"></div>
         <div class="card-info">
           <span class="card-school">SMK Negeri 1 Banyuwangi</span>
@@ -225,29 +299,29 @@
       </div>
 
       <div class="facility-card">
-        <img src="https://www.figma.com/api/mcp/asset/bdeadb0d-77ec-4a0b-8631-46665ecb0460" alt="Koperasi" />
+        <img src="assets/img/kopsis.jpeg" alt="Koperasi" />
         <div class="card-overlay"></div>
         <div class="card-info">
           <span class="card-school">SMK Negeri 1 Banyuwangi</span>
-          <div class="card-name big">Koperasi</div>
+          <div class="card-name">Koperasi</div>
         </div>
       </div>
 
       <div class="facility-card">
-        <img src="https://www.figma.com/api/mcp/asset/ac1e7a97-4c44-4add-85e7-3307e6bf8ffc" alt="Kantin" />
+        <img src="assets/img/kantin.jpeg" alt="Kantin" />
         <div class="card-overlay"></div>
         <div class="card-info">
           <span class="card-school">SMK Negeri 1 Banyuwangi</span>
-          <div class="card-name big">Kantin</div>
+          <div class="card-name">Kantin</div>
         </div>
       </div>
 
       <div class="facility-card">
-        <img src="https://www.figma.com/api/mcp/asset/e02b5c3e-9329-48aa-9b43-e69f691c928d" alt="Masjid" />
+        <img src="assets/img/masjid.jpeg" alt="Masjid" />
         <div class="card-overlay"></div>
         <div class="card-info">
           <span class="card-school">SMK Negeri 1 Banyuwangi</span>
-          <div class="card-name big">Masjid</div>
+          <div class="card-name">Masjid</div>
         </div>
       </div>
 
@@ -255,22 +329,26 @@
   </div>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <div>
-    <div class="f-logo">SMKN 1 Banyuwangi</div>
-    <p style="margin-top:6px">Jalan Wijaya Kusuma No.46, Banyuwangi</p>
-  </div>
-  <p>© 2026 SMK Negeri 1 Banyuwangi. All rights reserved.</p>
-</footer>
 
 <script>
-  // drag to scroll
+  // Navbar: transparan → putih saat scroll
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      nav.classList.add('scrolled');
+      nav.querySelectorAll('.nav-logo-title').forEach(el => el.style.color = '#1e3a8a');
+      nav.querySelectorAll('.nav-logo-sub').forEach(el => el.style.color = '#6b7280');
+    } else {
+      nav.classList.remove('scrolled');
+      nav.querySelectorAll('.nav-logo-title').forEach(el => el.style.color = '#fff');
+      nav.querySelectorAll('.nav-logo-sub').forEach(el => el.style.color = 'rgba(255,255,255,0.6)');
+    }
+  });
+
+  // Drag to scroll card strip
   const strip = document.getElementById('cardStrip');
   let isDown = false, startX, scrollLeft;
-  strip.addEventListener('mousedown', e => {
-    isDown = true; startX = e.pageX - strip.offsetLeft; scrollLeft = strip.scrollLeft;
-  });
+  strip.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - strip.offsetLeft; scrollLeft = strip.scrollLeft; });
   strip.addEventListener('mouseleave', () => isDown = false);
   strip.addEventListener('mouseup', () => isDown = false);
   strip.addEventListener('mousemove', e => {
